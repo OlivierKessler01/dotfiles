@@ -23,6 +23,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 lua <<EOF
+vim.api.nvim_command('filetype plugin indent on')
 vim.opt.number = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
