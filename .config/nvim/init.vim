@@ -20,8 +20,6 @@ call plug#end()
 syntax on
 filetype plugin indent on
 
-
-
 " Let fzf find hidden files
 let $FZF_DEFAULT_COMMAND='find . \! \( -type d -path ./.git -prune \) \! -type d -printf ''%P\n'''
 
@@ -32,9 +30,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-:tnoremap <Esc> <C-\><C-n>
-
-nmap <F8> :TagbarToggle<CR>
 
 :set splitright
 :set tabstop     =4
@@ -61,8 +56,11 @@ require("nvim-tree").setup({
   },
 })
 
-vim.api.nvim_set_keymap('n', '<F2>', ':NvimTreeToggle<Cr>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<C-p>', ':Files<Cr>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<F2>', ':NvimTreeToggle<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<C-p>', ':Files<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<F8>', ':TagbarToggle<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('t', '<Esc>', '<C-\><C-n>', {noremap=true, silent=true})
+
 require('lualine').setup({
     options = {
         theme = 'onelight'
