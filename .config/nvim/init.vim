@@ -36,16 +36,12 @@ nnoremap <C-H> <C-W><C-H>
 
 nmap <F8> :TagbarToggle<CR>
 
-set splitright
-set tabstop     =4
-set softtabstop =4
-set shiftwidth  =4
-set expandtab
+:set splitright
+:set tabstop     =4
+:set softtabstop =4
+:set shiftwidth  =4
+:set expandtab
 :set colorcolumn =79
-
-" Fzf custom keys
-nnoremap <C-p> :Files<Cr>
-
 
 lua <<EOF
 vim.g.loaded_netrw = 1
@@ -65,8 +61,13 @@ require("nvim-tree").setup({
   },
 })
 
-vim.api.nvim_set_keymap('n', '<F2>', ':NvimTreeToggle', {noremap=true, silent=true})
-require('lualine').setup()
+vim.api.nvim_set_keymap('n', '<F2>', ':NvimTreeToggle<Cr>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<C-p>', ':Files<Cr>', {noremap=true, silent=true})
+require('lualine').setup({
+    options = {
+        theme = 'onelight'
+    }
+})
 EOF
 
 
