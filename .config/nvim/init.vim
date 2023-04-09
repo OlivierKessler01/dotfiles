@@ -7,22 +7,19 @@
 set number
 
 call plug#begin()
-Plug 'vim-airline/vim-airline'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install()}}
 Plug 'junegunn/fzf.vim',
 Plug 'nelsyeung/twig.vim'
 Plug 'preservim/tagbar'
-Plug 'preservim/nerdtree'
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-web-devicons'
 Plug 'f-person/git-blame.nvim'
 call plug#end()
 
 syntax on
 filetype plugin indent on
 
-let NERDTreeShowHidden=1
-map <F2> :NERDTreeToggle<CR>
-" Close NERDtree if last buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")) | q | endif
 
 
 " Let fzf find hidden files
@@ -48,5 +45,30 @@ set expandtab
 
 " Fzf custom keys
 nnoremap <C-p> :Files<Cr>
+
+
+lua <<EOF
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+
+-- OR setup with some options
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+
+vim.api.nvim_set_keymap('n', '<F2>', ':NvimTreeToggle', {noremap=true, silent=true})
+require('lualine').setup()
+EOF
+
+
 
 " User defined ------------------------------------------------
