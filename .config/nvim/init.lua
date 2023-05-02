@@ -23,6 +23,13 @@ vim.api.nvim_set_keymap('n', '<C-H>', '<C-W><C-H>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {noremap=true, silent=true})
 vim.cmd.packadd('packer.nvim')
 
+
+vim.g.leetcode_browser='chrome'
+vim.api.nvim_set_keymap('n', '<C-L><C-L>', ':LeetCodeList<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<C-L><C-T>', ':LeetCodeTest<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<C-L><C-S>', ':LeetCodeSubmit<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<C-L><C-I>', ':LeetCodeSignIn<CR>', {noremap=true, silent=true})
+
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
@@ -36,6 +43,8 @@ return require('packer').startup(function(use)
 		theme = 'onelight'
 	    }
 	})
+
+    use {'ianding1/leetcode.vim'}
 
 	-- TELESCOPE
 	use {

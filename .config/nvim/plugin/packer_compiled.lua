@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/olivierkessler/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
+  ["leetcode.vim"] = {
+    loaded = true,
+    path = "/home/olivierkessler/.local/share/nvim/site/pack/packer/start/leetcode.vim",
+    url = "https://github.com/ianding1/leetcode.vim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/olivierkessler/.local/share/nvim/site/pack/packer/start/lualine.nvim",
