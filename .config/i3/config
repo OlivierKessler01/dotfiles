@@ -34,6 +34,15 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+assign [class="alacritty-code"] 1
+assign [class="alacritty-nvim"] 2
+assign [class="mail"] 3
+assign [class="teams"] 4
+exec "alacritty --class 'alacritty-code,alacritty-code' --hold -e tmux new -s terminal"
+exec "alacritty --class 'alacritty-nvim,alacritty-nvim' --hold -e tmux new -s nvim"
+exec google-chrome --class="mail" mail.bioserenity.com
+exec google-chrome --class="teams" mail.microsoft.com
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status

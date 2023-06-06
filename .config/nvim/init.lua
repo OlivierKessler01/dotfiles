@@ -44,7 +44,7 @@ return require('packer').startup(function(use)
 	    }
 	})
 
-    use {'ianding1/leetcode.vim'}
+    use {'mbledkowski/neuleetcode.vim'}
 
 	-- TELESCOPE
 	use {
