@@ -44,7 +44,7 @@ exec google-chrome --class="mail" mail.bioserenity.com
 exec google-chrome --class="teams" mail.microsoft.com
 
 #Setup the background image
-exec --no-startup-id nitrogen --set-auto ~/.config/i3/background.jpg --head=0 && nitrogen --set-auto ~/.config/i3/background2.jpg --head=1
+exec --no-startup-id nitrogen --set-auto ~/.config/i3/background.jpg --head=0 && nitrogen --set-auto ~/.config/i3/background.jpg --head=1
 #Exec the picom compositor
 exec_always picom -b
 
