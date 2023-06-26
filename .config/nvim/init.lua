@@ -21,14 +21,15 @@ vim.api.nvim_set_keymap('n', '<C-K>', '<C-W><C-K>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<C-L>', '<C-W><C-L>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<C-H>', '<C-W><C-H>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'jk', '<Esc>', {noremap=true, silent=true})
 vim.cmd.packadd('packer.nvim')
 
 
 vim.g.leetcode_browser='chrome'
-vim.api.nvim_set_keymap('n', '<C-L><C-L>', ':LeetCodeList<CR>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<C-L><C-T>', ':LeetCodeTest<CR>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<C-L><C-S>', ':LeetCodeSubmit<CR>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<C-L><C-I>', ':LeetCodeSignIn<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<Leader>l', ':LeetCodeList<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<Leader>t', ':LeetCodeTest<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<Leader>s', ':LeetCodeSubmit<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<Leader>si', ':LeetCodeSignIn<CR>', {noremap=true, silent=true})
 
 return require('packer').startup(function(use)
     -- Packer can manage itself
