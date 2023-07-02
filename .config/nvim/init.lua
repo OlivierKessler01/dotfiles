@@ -31,17 +31,44 @@ vim.api.nvim_set_keymap('n', '<Leader>t', ':LeetCodeTest<CR>', {noremap=true, si
 vim.api.nvim_set_keymap('n', '<Leader>s', ':LeetCodeSubmit<CR>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<Leader>si', ':LeetCodeSignIn<CR>', {noremap=true, silent=true})
 
+-- LSP Config
 local lsp = require('lsp-zero').preset({})
-
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
 end)
-
 -- When you don't have mason.nvim installed
 -- You'll need to list the servers installed in your system
-lsp.setup_servers({'pyright'})
-
+lsp.ensure_installed({
+  -- Replace these with whatever servers you want to install
+  'tsserver',
+  'eslint',
+  'pyright',
+  'clangd'
+})
 lsp.setup()
+
+-- Treesitter config
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all" (the five listed parsers should always be installed)
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "python", "cpp", "typescript" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  highlight = {
+    enable = true,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
 
 return require('packer').startup(function(use)
     -- Packer can manage itself
@@ -57,26 +84,33 @@ return require('packer').startup(function(use)
 	    }
 	})
 
- use {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v2.x',
-  requires = {
-    -- LSP Support
-    {'neovim/nvim-lspconfig'},             -- Required
-    {                                      -- Optional
-      'williamboman/mason.nvim',
-      run = function()
-        pcall(vim.cmd, 'MasonUpdate')
-      end,
-    },
-    {'williamboman/mason-lspconfig.nvim'}, -- Optional
+   -- Treesitter, language parsers used for features like highlighting
+   -- folding, etc. 
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
 
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},     -- Required
-    {'hrsh7th/cmp-nvim-lsp'}, -- Required
-    {'L3MON4D3/LuaSnip'},     -- Required
-  }
-}   
+    use {
+      'VonHeikemen/lsp-zero.nvim',
+      branch = 'v2.x',
+      requires = {
+        -- LSP Support
+        {'neovim/nvim-lspconfig'},             -- Required
+        {                                      -- Optional
+          'williamboman/mason.nvim',
+          run = function()
+            pcall(vim.cmd, 'MasonUpdate')
+          end,
+        },
+        {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+        -- Autocompletion
+        {'hrsh7th/nvim-cmp'},     -- Required
+        {'hrsh7th/cmp-nvim-lsp'}, -- Required
+        {'L3MON4D3/LuaSnip'},     -- Required
+      }
+    }   
 
     use {'mbledkowski/neuleetcode.vim'}
 
@@ -112,3 +146,5 @@ return require('packer').startup(function(use)
     use { "ellisonleao/gruvbox.nvim" }
     vim.cmd("colorscheme gruvbox")
 end)
+
+
