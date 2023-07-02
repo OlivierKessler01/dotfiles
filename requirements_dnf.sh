@@ -8,7 +8,7 @@ i3 pavucontrol emacs ripgrep picom nitrogen g++
 pip3 install pynvim keyring browser-cookie3
 
 #Install node
-wget https://deb.nodesource.com/setup_19.x -O node.sh
+wget https://rpm.nodesource.com/setup_19.x -O node.sh
 chmod +x node.sh
 /bin/bash node.sh
 rm node.sh
