@@ -31,6 +31,18 @@ vim.api.nvim_set_keymap('n', '<Leader>t', ':LeetCodeTest<CR>', {noremap=true, si
 vim.api.nvim_set_keymap('n', '<Leader>s', ':LeetCodeSubmit<CR>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<Leader>si', ':LeetCodeSignIn<CR>', {noremap=true, silent=true})
 
+local lsp = require('lsp-zero').preset({})
+
+lsp.on_attach(function(client, bufnr)
+  lsp.default_keymaps({buffer = bufnr})
+end)
+
+-- When you don't have mason.nvim installed
+-- You'll need to list the servers installed in your system
+lsp.setup_servers({'pyright'})
+
+lsp.setup()
+
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
@@ -45,29 +57,26 @@ return require('packer').startup(function(use)
 	    }
 	})
 
-    
-    use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v1.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},
-		  {'williamboman/mason.nvim'},
-		  {'williamboman/mason-lspconfig.nvim'},
+ use {
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v2.x',
+  requires = {
+    -- LSP Support
+    {'neovim/nvim-lspconfig'},             -- Required
+    {                                      -- Optional
+      'williamboman/mason.nvim',
+      run = function()
+        pcall(vim.cmd, 'MasonUpdate')
+      end,
+    },
+    {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-		  -- Autocompletion
-		  {'hrsh7th/nvim-cmp'},
-		  {'hrsh7th/cmp-buffer'},
-		  {'hrsh7th/cmp-path'},
-		  {'saadparwaiz1/cmp_luasnip'},
-		  {'hrsh7th/cmp-nvim-lsp'},
-		  {'hrsh7th/cmp-nvim-lua'},
-
-		  -- Snippets
-		  {'L3MON4D3/LuaSnip'},
-		  {'rafamadriz/friendly-snippets'},
-	  }
-    }
+    -- Autocompletion
+    {'hrsh7th/nvim-cmp'},     -- Required
+    {'hrsh7th/cmp-nvim-lsp'}, -- Required
+    {'L3MON4D3/LuaSnip'},     -- Required
+  }
+}   
 
     use {'mbledkowski/neuleetcode.vim'}
 

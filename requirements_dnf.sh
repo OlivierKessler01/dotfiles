@@ -12,7 +12,3 @@ wget https://rpm.nodesource.com/setup_19.x -O node.sh
 chmod +x node.sh
 /bin/bash node.sh
 rm node.sh
-
-
-# Install Python LSP client
-npm i -g pyright
