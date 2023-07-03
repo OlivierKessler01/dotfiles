@@ -31,7 +31,6 @@ vim.api.nvim_set_keymap('n', '<Leader>t', ':LeetCodeTest<CR>', { noremap = true,
 vim.api.nvim_set_keymap('n', '<Leader>s', ':LeetCodeSubmit<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>si', ':LeetCodeSignIn<CR>', { noremap = true, silent = true })
 
-
 -- Treesitter config
 return require('packer').startup(function(use)
     -- Packer can manage itself
@@ -56,6 +55,8 @@ return require('packer').startup(function(use)
         run = function()
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
+        end,
+        config = function()
             require'nvim-treesitter.configs'.setup {
               -- A list of parser names, or "all" (the five listed parsers should always be installed)
               ensure_installed = { "c","php", "lua", "vim", "vimdoc", "query", "python", "cpp", "typescript" },
@@ -99,7 +100,7 @@ return require('packer').startup(function(use)
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
             { 'L3MON4D3/LuaSnip' }, -- Required
         },
-        run = function () 
+        config = function () 
             -- LSP Config
             local lsp = require('lsp-zero').preset({})
             lsp.on_attach(function(client, bufnr)
@@ -137,7 +138,7 @@ return require('packer').startup(function(use)
             group_empty = true,
         },
         filters = {
-            dotfiles = true,
+            dotfiles = false,
         },
     })
 
