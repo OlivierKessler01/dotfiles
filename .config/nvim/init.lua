@@ -31,46 +31,8 @@ vim.api.nvim_set_keymap('n', '<Leader>t', ':LeetCodeTest<CR>', { noremap = true,
 vim.api.nvim_set_keymap('n', '<Leader>s', ':LeetCodeSubmit<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>si', ':LeetCodeSignIn<CR>', { noremap = true, silent = true })
 
--- LSP Config
-local lsp = require('lsp-zero').preset({})
-lsp.on_attach(function(client, bufnr)
-    lsp.default_keymaps({ buffer = bufnr })
-end)
--- When you don't have mason.nvim installed
--- You'll need to list the servers installed in your system
-lsp.ensure_installed({
-    -- Replace these with whatever servers you want to install
-    'tsserver',
-    'eslint',
-    'pyright',
-    'clangd'
-})
-lsp.setup()
-
 
 -- Treesitter config
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c","php", "lua", "vim", "vimdoc", "query", "python", "cpp", "typescript" },
-
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
-
-  highlight = {
-    enable = true,
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
-
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
@@ -94,6 +56,27 @@ return require('packer').startup(function(use)
         run = function()
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
+            require'nvim-treesitter.configs'.setup {
+              -- A list of parser names, or "all" (the five listed parsers should always be installed)
+              ensure_installed = { "c","php", "lua", "vim", "vimdoc", "query", "python", "cpp", "typescript" },
+
+              -- Install parsers synchronously (only applied to `ensure_installed`)
+              sync_install = false,
+
+              -- Automatically install missing parsers when entering buffer
+              -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+              auto_install = true,
+
+              highlight = {
+                enable = true,
+
+                -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+                -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+                -- Using this option may slow down your editor, and you may see some duplicate highlights.
+                -- Instead of true it can also be a list of languages
+                additional_vim_regex_highlighting = false,
+              },
+            }
         end,
     }
 
@@ -116,6 +99,20 @@ return require('packer').startup(function(use)
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
             { 'L3MON4D3/LuaSnip' }, -- Required
         }
+        run = function () 
+            -- LSP Config
+            local lsp = require('lsp-zero').preset({})
+            lsp.on_attach(function(client, bufnr)
+                lsp.default_keymaps({ buffer = bufnr })
+            end)
+            lsp.ensure_installed({
+                'tsserver',
+                'eslint',
+                'pyright',
+                'clangd'
+            })
+            lsp.setup()
+        end
     }
 
     use { 'mbledkowski/neuleetcode.vim' }
