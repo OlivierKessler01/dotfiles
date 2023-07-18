@@ -116,8 +116,6 @@ return require('packer').startup(function(use)
         end
     }
 
-    use { 'mbledkowski/neuleetcode.vim' }
-
     -- TELESCOPE
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.1',
@@ -148,5 +146,6 @@ return require('packer').startup(function(use)
     -- GitBlame
     use { 'f-person/git-blame.nvim' }
     use { "ellisonleao/gruvbox.nvim" }
+
     vim.cmd("colorscheme gruvbox")
 end)
