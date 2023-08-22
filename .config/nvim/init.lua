@@ -21,7 +21,7 @@ vim.api.nvim_set_keymap('n', '<C-K>', '<C-W><C-K>', { noremap = true, silent = t
 vim.api.nvim_set_keymap('n', '<C-L>', '<C-W><C-L>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-H>', '<C-W><C-H>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', 'jk', '<Esc>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', 'jk', '<Esc>', { })
 vim.cmd.packadd('packer.nvim')
 
 
@@ -59,7 +59,9 @@ return require('packer').startup(function(use)
         config = function()
             require'nvim-treesitter.configs'.setup {
               -- A list of parser names, or "all" (the five listed parsers should always be installed)
-              ensure_installed = { "c","php", "lua", "vim", "vimdoc", "query", "python", "cpp", "typescript" },
+              ensure_installed = { 
+                  "c","php", "lua", "vim", "vimdoc", "query", 
+                  "python", "cpp", "typescript","yaml"},
 
               -- Install parsers synchronously (only applied to `ensure_installed`)
               sync_install = false,
