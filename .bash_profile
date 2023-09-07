@@ -16,5 +16,6 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
 fi
 
 export PATH=$PATH:$HOME/.emacs.d/bin
+export PATH=$PATH:/var/lib/snapd/snap/bin
 
 
