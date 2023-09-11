@@ -17,5 +17,6 @@ fi
 
 export PATH=$PATH:$HOME/.emacs.d/bin
 export PATH=$PATH:/var/lib/snapd/snap/bin
+export EDITOR=/usr/local/bin/nvim
 
 
