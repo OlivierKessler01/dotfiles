@@ -95,7 +95,6 @@ _G.packer_plugins = {
     url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   ["lsp-zero.nvim"] = {
-    config = { "\27LJ\2\n;\0\2\5\1\3\0\6-\2\0\0009\2\0\0025\4\1\0=\1\2\4B\2\2\1K\0\1\0\0À\vbuffer\1\0\0\20default_keymaps¤\1\1\0\4\0\b\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0029\1\3\0003\3\4\0B\1\2\0019\1\5\0005\3\6\0B\1\2\0019\1\a\0B\1\1\0012\0\0€K\0\1\0\nsetup\1\5\0\0\rtsserver\veslint\fpyright\vclangd\21ensure_installed\0\14on_attach\vpreset\rlsp-zero\frequire\0" },
     loaded = true,
     path = "/home/olivierkessler/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
@@ -115,11 +114,6 @@ _G.packer_plugins = {
     path = "/home/olivierkessler/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  ["neuleetcode.vim"] = {
-    loaded = true,
-    path = "/home/olivierkessler/.local/share/nvim/site/pack/packer/start/neuleetcode.vim",
-    url = "https://github.com/mbledkowski/neuleetcode.vim"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/olivierkessler/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -136,7 +130,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    config = { "\27LJ\2\nö\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\14highlight\1\0\2\venable\2&additional_vim_regex_highlighting\1\21ensure_installed\1\0\2\17auto_install\2\17sync_install\1\1\n\0\0\6c\bphp\blua\bvim\vvimdoc\nquery\vpython\bcpp\15typescript\nsetup\28nvim-treesitter.configs\frequire\0" },
+    config = { "\27LJ\2\nû\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\14highlight\1\0\2\venable\2&additional_vim_regex_highlighting\1\21ensure_installed\1\0\2\17auto_install\2\17sync_install\1\1\v\0\0\6c\bphp\blua\bvim\vvimdoc\nquery\vpython\bcpp\15typescript\tyaml\nsetup\28nvim-treesitter.configs\frequire\0" },
     loaded = true,
     path = "/home/olivierkessler/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -165,17 +159,18 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/olivierkessler/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/olivierkessler/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: lsp-zero.nvim
-time([[Config for lsp-zero.nvim]], true)
-try_loadstring("\27LJ\2\n;\0\2\5\1\3\0\6-\2\0\0009\2\0\0025\4\1\0=\1\2\4B\2\2\1K\0\1\0\0À\vbuffer\1\0\0\20default_keymaps¤\1\1\0\4\0\b\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0029\1\3\0003\3\4\0B\1\2\0019\1\5\0005\3\6\0B\1\2\0019\1\a\0B\1\1\0012\0\0€K\0\1\0\nsetup\1\5\0\0\rtsserver\veslint\fpyright\vclangd\21ensure_installed\0\14on_attach\vpreset\rlsp-zero\frequire\0", "config", "lsp-zero.nvim")
-time([[Config for lsp-zero.nvim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\nö\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\14highlight\1\0\2\venable\2&additional_vim_regex_highlighting\1\21ensure_installed\1\0\2\17auto_install\2\17sync_install\1\1\n\0\0\6c\bphp\blua\bvim\vvimdoc\nquery\vpython\bcpp\15typescript\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
+try_loadstring("\27LJ\2\nû\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\14highlight\1\0\2\venable\2&additional_vim_regex_highlighting\1\21ensure_installed\1\0\2\17auto_install\2\17sync_install\1\1\v\0\0\6c\bphp\blua\bvim\vvimdoc\nquery\vpython\bcpp\15typescript\tyaml\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
 time([[Config for nvim-treesitter]], false)
 
 _G._packer.inside_compile = false

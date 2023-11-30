@@ -10,6 +10,7 @@ vim.opt.tabstop          = 4
 vim.opt.shiftwidth       = 4
 vim.opt.expandtab        = true
 vim.opt.colorcolumn      = '79'
+vim.wo.relativenumber    = true
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors    = true
 vim.api.nvim_set_keymap('n', '<F2>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
@@ -52,6 +53,7 @@ return require('packer').startup(function(use)
     -- folding, etc.
     use {
         'nvim-treesitter/nvim-treesitter',
+        tag = 'v0.7.0',
         run = function()
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
@@ -101,21 +103,7 @@ return require('packer').startup(function(use)
             { 'hrsh7th/nvim-cmp' }, -- Required
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
             { 'L3MON4D3/LuaSnip' }, -- Required
-        },
-        config = function () 
-            -- LSP Config
-            local lsp = require('lsp-zero').preset({})
-            lsp.on_attach(function(client, bufnr)
-                lsp.default_keymaps({ buffer = bufnr })
-            end)
-            lsp.ensure_installed({
-                'tsserver',
-                'eslint',
-                'pyright',
-                'clangd'
-            })
-            lsp.setup()
-        end
+        }
     }
 
     -- TELESCOPE
@@ -132,6 +120,16 @@ return require('packer').startup(function(use)
     --NvimTree
     use { 'nvim-tree/nvim-tree.lua' }
     use { 'nvim-tree/nvim-web-devicons' }
+
+    -- Tagbar
+    use { 'preservim/tagbar' }
+
+    -- GitBlame
+    use { 'f-person/git-blame.nvim' }
+    use { "ellisonleao/gruvbox.nvim" }
+    use { 'tpope/vim-fugitive' }
+
+    vim.cmd("colorscheme gruvbox")
     require("nvim-tree").setup({
         sort_by = "case_sensitive",
         renderer = {
@@ -142,12 +140,5 @@ return require('packer').startup(function(use)
         },
     })
 
-    -- Tagbar
-    use { 'preservim/tagbar' }
-
-    -- GitBlame
-    use { 'f-person/git-blame.nvim' }
-    use { "ellisonleao/gruvbox.nvim" }
-
-    vim.cmd("colorscheme gruvbox")
 end)
+
