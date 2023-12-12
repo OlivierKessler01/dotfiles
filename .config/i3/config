@@ -41,7 +41,7 @@ assign [class="teams"] 4
 exec "alacritty --class 'alacritty-code,alacritty-code' --hold -e tmux new -s terminal"
 exec "alacritty --class 'alacritty-nvim,alacritty-nvim' --hold -e tmux new -s nvim"
 exec google-chrome --class="mail" mail.bioserenity.com
-exec google-chrome --class="teams" mail.microsoft.com
+exec autorandr horizontal-reverse
 
 #Setup the background image
 exec --no-startup-id nitrogen --set-auto ~/.config/i3/background.jpg --head=0 && nitrogen --set-auto ~/.config/i3/background.jpg --head=1
