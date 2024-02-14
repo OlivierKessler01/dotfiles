@@ -1,5 +1,5 @@
 -- User defined -------------------------------------------i
--- Run :PlugInstall to install Plugins
+-- Run :PackerInstall to install Plugins
 
 vim.api.nvim_command('filetype plugin indent on')
 vim.opt.number           = true
@@ -25,12 +25,6 @@ vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', 'jk', '<Esc>', { })
 vim.cmd.packadd('packer.nvim')
 
-
-vim.g.leetcode_browser = 'chrome'
-vim.api.nvim_set_keymap('n', '<Leader>l', ':LeetCodeList<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>t', ':LeetCodeTest<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>s', ':LeetCodeSubmit<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>si', ':LeetCodeSignIn<CR>', { noremap = true, silent = true })
 
 -- Treesitter config
 return require('packer').startup(function(use)
