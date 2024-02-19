@@ -25,6 +25,15 @@ vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', 'jk', '<Esc>', { })
 vim.cmd.packadd('packer.nvim')
 
+-- Copy to clipboard
+vim.api.nvim_set_keymap('n', "<leader>y",  '"+y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', "<leader>y",  '"+y', { noremap = true, silent = true })
+
+-- Paste from clipboard
+vim.api.nvim_set_keymap('n', "<leader>p",  '"+p', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', "<leader>p",  '"+p', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', "<leader>P",  '"+P', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', "<leader>P",  '"+P', { noremap = true, silent = true })
 
 -- Treesitter config
 return require('packer').startup(function(use)
