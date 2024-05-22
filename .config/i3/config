@@ -38,10 +38,12 @@ assign [class="alacritty-code"] 1
 assign [class="alacritty-nvim"] 2
 assign [class="mail"] 3
 assign [class="firefox"] 4
+assign [class="todoist"] 4
 exec "alacritty --class 'alacritty-code,alacritty-code' --hold -e tmux new -s terminal"
 exec "alacritty --class 'alacritty-nvim,alacritty-nvim' --hold -e tmux new -s nvim"
 exec google-chrome --class="mail" mail.bioserenity.com
 exec firefox "teams.microsoft.com"
+exec todoist
 
 #Setup the dual-monitor
 exec autorandr horizontal-reverse
