@@ -17,4 +17,10 @@ export PATH=$PATH:/var/lib/snapd/snap/bin
 export PATH=$PATH:/usr/local/go/bin
 export EDITOR=/usr/local/bin/nvim
 
+function connect_vpn() {
+    HOST="$1" && PORT=443 && \
+      openfortivpn-webview $HOST:$PORT 2>/dev/null \
+      | sudo openfortivpn $HOST:$PORT --cookie-on-stdin
+}
+
 

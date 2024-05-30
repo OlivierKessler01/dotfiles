@@ -2,10 +2,7 @@
 
 sudo dnf update 
 sudo dnf install maim xclip redshift redshift-gtk \
-i3 pavucontrol ripgrep picom nitrogen g++
-
-#Vim leetcode
-pip3 install pynvim keyring browser-cookie3
+i3 pavucontrol ripgrep picom nitrogen g++ git
 
 #Install node
 wget https://rpm.nodesource.com/setup_19.x -O node.sh

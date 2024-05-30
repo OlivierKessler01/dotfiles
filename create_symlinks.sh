@@ -14,3 +14,8 @@ ln -s $(pwd)/.tmux.conf ~
 
 rm ~/.bash_profile && true
 ln -s $(pwd)/.bash_profile ~
+
+rm ~/.gitconfig && true
+ln -s $(pwd)/.gitconfig ~
+
+
