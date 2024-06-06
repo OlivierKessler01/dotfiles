@@ -43,13 +43,6 @@ return require('packer').startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-        run = function()
-            require('lualine').setup({
-                options = {
-                    theme = 'onelight'
-                }
-            })
-        end,
     }
 
     -- Treesitter, language parsers used for features like highlighting
