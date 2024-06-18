@@ -3,6 +3,7 @@
 
 vim.api.nvim_command('filetype plugin indent on')
 vim.opt.number           = true
+vim.o.background         = "dark"
 vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.splitright       = true
@@ -104,7 +105,8 @@ return require('packer').startup(function(use)
 
     -- TELESCOPE
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.8',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     local builtin = require('telescope.builtin')
