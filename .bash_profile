@@ -15,6 +15,7 @@ fi
 
 export PATH=$PATH:/var/lib/snapd/snap/bin
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/trace-compass
 export EDITOR=/usr/local/bin/nvim
 
 function connect_vpn() {
@@ -27,7 +28,7 @@ function enable_kernel_tracing() {
     sudo lttng destroy my-kernel-session && true
     sudo lttng create my-kernel-session --output=/tmp/my-kernel-trace
     sudo lttng enable-event --kernel sched_switch,sched_process_fork
-    sudo lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket
+    sudo lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket,fork
 }
 
 function start_kernel_tracing() {
