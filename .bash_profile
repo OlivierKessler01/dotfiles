@@ -23,4 +23,10 @@ function connect_vpn() {
       | sudo openfortivpn $HOST:$PORT --cookie-on-stdin
 }
 
+function enable_kernel_tracing() {
+    sudo lttng create my-kernel-session --output=/tmp/my-kernel-trace
+    lttng enable-event --kernel sched_switch,sched_process_fork
+    lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket
+}
+
 PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
