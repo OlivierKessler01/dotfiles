@@ -29,4 +29,9 @@ function enable_kernel_tracing() {
     lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket
 }
 
+function tcp_dump() {
+    #first param is the interface name, second param is the port
+    sudo tcpdump -i $1 -A port $2
+}
+
 PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
