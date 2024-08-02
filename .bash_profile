@@ -24,9 +24,18 @@ function connect_vpn() {
 }
 
 function enable_kernel_tracing() {
+    sudo lttng destroy my-kernel-session && true
     sudo lttng create my-kernel-session --output=/tmp/my-kernel-trace
-    lttng enable-event --kernel sched_switch,sched_process_fork
-    lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket
+    sudo lttng enable-event --kernel sched_switch,sched_process_fork
+    sudo lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket
+}
+
+function start_kernel_tracing() {
+    sudo lttng start my-kernel-session 
+}
+
+function stop_kernel_tracing() {
+    sudo lttng stop my-kernel-session 
 }
 
 function tcp_dump() {
