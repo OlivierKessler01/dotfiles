@@ -24,11 +24,28 @@ function connect_vpn() {
       | sudo openfortivpn $HOST:$PORT --cookie-on-stdin
 }
 
+function install_lttng() {
+    cd $(mktemp -d) &&
+    wget http://lttng.org/files/lttng-modules/lttng-modules-latest-2.13.tar.bz2 &&
+    tar -xf lttng-modules-latest-2.13.tar.bz2 &&
+    cd lttng-modules-2.13.* &&
+    make &&
+    sudo make modules_install &&
+    sudo depmod -a
+}
+
 function enable_kernel_tracing() {
-    sudo lttng destroy my-kernel-session && true
-    sudo lttng create my-kernel-session --output=/tmp/my-kernel-trace
-    sudo lttng enable-event --kernel sched_switch,sched_process_fork
-    sudo lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket,fork
+    sudo killall lttng-sessiond && echo "Killed daemon"
+    sudo lttng-sessiond -d && true
+    lttng destroy my-kernel-session && true
+    lttng create my-kernel-session --output=/tmp/my-kernel-trace
+    lttng enable-event --kernel sched_switch,sched_process_fork
+    lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket,fork
+}
+
+function disable_kernel_tracing() {
+    lttng destroy my-kernel-session && true
+    sudo killall lttng-sessiond && true
 }
 
 function start_kernel_tracing() {
