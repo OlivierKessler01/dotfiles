@@ -25,6 +25,7 @@ function connect_vpn() {
 }
 
 function install_lttng() {
+    #Run this before using the kernel tracing functionnalities
     cd $(mktemp -d) &&
     wget http://lttng.org/files/lttng-modules/lttng-modules-latest-2.13.tar.bz2 &&
     tar -xf lttng-modules-latest-2.13.tar.bz2 &&
