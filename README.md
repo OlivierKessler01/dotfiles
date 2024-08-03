@@ -37,3 +37,26 @@ wget -qO- https://github.com/gm-vm/openfortivpn-webview/releases/download/v1.1.0
 connect_vpn "<url>"
 ```
 
+# Kernel tracing
+
+Install lttng on the computer
+
+```bash
+install_lttng
+```
+
+Then
+
+```bash
+enable_kernel_tracing
+start_kernel_tracing
+#Do whatever you want to trace
+stop_kernel_tracing
+disable_kernel_tracing
+```
+
+Run tracecompass to read the traces located in /tmp/my-kernel-trace
+
+```bash
+tracecompass
+```
