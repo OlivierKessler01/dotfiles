@@ -41,7 +41,7 @@ function enable_kernel_tracing() {
     lttng destroy my-kernel-session && true
     lttng create my-kernel-session --output=/tmp/my-kernel-trace
     lttng enable-event --kernel sched_switch,sched_process_fork
-    lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket,fork
+    lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket,fork,send,connect
 }
 
 function disable_kernel_tracing() {
