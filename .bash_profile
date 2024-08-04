@@ -41,7 +41,7 @@ function enable_kernel_tracing() {
     lttng destroy my-kernel-session && true
     lttng create my-kernel-session --output=/tmp/my-kernel-trace
     lttng enable-event --kernel sched_switch,sched_process_fork
-    lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket,fork,send,connect
+    lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket,send,connect
 }
 
 function disable_kernel_tracing() {
@@ -50,11 +50,11 @@ function disable_kernel_tracing() {
 }
 
 function start_kernel_tracing() {
-    sudo lttng start my-kernel-session 
+    lttng start my-kernel-session 
 }
 
 function stop_kernel_tracing() {
-    sudo lttng stop my-kernel-session 
+    lttng stop my-kernel-session 
 }
 
 function tcp_dump() {
