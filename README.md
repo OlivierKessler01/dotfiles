@@ -48,11 +48,9 @@ install_lttng
 Then
 
 ```bash
-enable_kernel_tracing
 start_kernel_tracing
 #Do whatever you want to trace
 stop_kernel_tracing
-disable_kernel_tracing
 ```
 
 Run tracecompass to read the traces located in /tmp/my-kernel-trace

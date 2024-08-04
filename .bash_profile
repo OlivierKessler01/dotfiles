@@ -35,26 +35,20 @@ function install_lttng() {
     sudo depmod -a
 }
 
-function enable_kernel_tracing() {
+function start_kernel_tracing() {
     sudo killall lttng-sessiond && echo "Killed daemon"
     sudo lttng-sessiond -d && true
     lttng destroy my-kernel-session && true
     lttng create my-kernel-session --output=/tmp/my-kernel-trace
-    lttng enable-event --kernel sched_switch,sched_process_fork
+    lttng enable-event --kernel sched_switch,sched_process_fork,sched_process_exit
     lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket,send,connect
-}
-
-function disable_kernel_tracing() {
-    lttng destroy my-kernel-session && true
-    sudo killall lttng-sessiond && true
-}
-
-function start_kernel_tracing() {
     lttng start my-kernel-session 
 }
 
 function stop_kernel_tracing() {
     lttng stop my-kernel-session 
+    lttng destroy my-kernel-session && true
+    sudo killall lttng-sessiond && true
 }
 
 function tcp_dump() {
