@@ -7,6 +7,7 @@ Tmux, NVIM and I3 configuration files for my development environment
 - first install pre-requisites: 
 #https://github.com/gm-vm/openfortivpn#building-and-installing-from-source
 ```bash
+#Already covered by bootstrap.sh
 sudo dnf install --noconfirm gcc automake autoconf make pkg-config openssl-devel
 ```
 
@@ -39,13 +40,15 @@ connect_vpn "<url>"
 
 # Kernel tracing
 
-Install lttng on the computer
+1. Install lttng on the computer
 
 ```bash
 install_lttng
 ```
 
-Then
+2. Disable Secure boot in your BIOS, (or sign the modules but it's a pain in the arse)
+
+3. Then start tracing
 
 ```bash
 start_kernel_tracing

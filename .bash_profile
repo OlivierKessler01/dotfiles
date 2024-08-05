@@ -25,24 +25,37 @@ function connect_vpn() {
 }
 
 function install_lttng() {
-    #Run this before using the kernel tracing functionnalities
-    cd $(mktemp -d) &&
-    wget http://lttng.org/files/lttng-modules/lttng-modules-latest-2.13.tar.bz2 &&
-    tar -xf lttng-modules-latest-2.13.tar.bz2 &&
-    cd lttng-modules-2.13.* &&
-    make &&
-    sudo make modules_install &&
-    sudo depmod -a
+    #Modules require signature to be installed if Secure boot is enabled
+    #MOK is a pain on a day to day basis so just ask the user to disable
+    #secure boot
+    read -p "Did you disable Secure Boot in the UEFI BIOS, you need to ? " -n 1 -r
+    echo    # (optional) move to a new line
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        #Run this before using the kernel tracing functionnalities
+        cd $(mktemp -d) &&
+        wget http://lttng.org/files/lttng-modules/lttng-modules-latest-2.13.tar.bz2 &&
+        tar -xf lttng-modules-latest-2.13.tar.bz2 &&
+        cd lttng-modules-2.13.* &&
+        make &&
+        sudo make modules_install &&
+        sudo depmod -a
+    fi
 }
 
 function start_kernel_tracing() {
-    sudo killall lttng-sessiond && echo "Killed daemon"
-    sudo lttng-sessiond -d && true
-    lttng destroy my-kernel-session && true
-    lttng create my-kernel-session --output=/tmp/my-kernel-trace
-    lttng enable-event --kernel sched_switch,sched_process_fork,sched_process_exit
-    lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket,send,connect
-    lttng start my-kernel-session 
+    read -p "Did you disable Secure Boot in the UEFI BIOS, you need to ? " -n 1 -r
+    echo    # (optional) move to a new line
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        sudo killall lttng-sessiond && echo "Killed daemon"
+        sudo lttng-sessiond -d && true
+        lttng destroy my-kernel-session && true
+        lttng create my-kernel-session --output=/tmp/my-kernel-trace
+        lttng enable-event --kernel sched_switch,sched_process_fork,sched_process_exit
+        lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket,send,connect
+        lttng start my-kernel-session 
+    fi
 }
 
 function stop_kernel_tracing() {

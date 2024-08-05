@@ -2,8 +2,10 @@
 
 # Install common software I use
 sudo dnf update 
-sudo dnf install maim xclip redshift redshift-gtk \
+sudo dnf install --noconfirm maim xclip redshift redshift-gtk \
 i3 pavucontrol ripgrep picom nitrogen g++ git alacritty nvim \
+ gcc automake autoconf make pkg-config openssl-devel
+
 xrandr autorandr
 ## Needed to build kernel modules (like lttng)
 sudo dnf install kernel-devel
@@ -17,5 +19,9 @@ rm node.sh
 
 # Set-up the timezone
 timedatectl set-timezone Europe/Paris
+
+# Add user to groups
+usermod -aG olivierkessler tracing
+usermod -aG olivierkessler docker
 
 
