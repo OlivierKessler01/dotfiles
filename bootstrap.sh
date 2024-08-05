@@ -4,9 +4,9 @@
 sudo dnf update 
 sudo dnf install --noconfirm maim xclip redshift redshift-gtk \
 i3 pavucontrol ripgrep picom nitrogen g++ git alacritty nvim \
- gcc automake autoconf make pkg-config openssl-devel
+ gcc automake autoconf make pkg-config openssl-devel xrandr \
+ autorandr
 
-xrandr autorandr
 ## Needed to build kernel modules (like lttng)
 sudo dnf install kernel-devel
 ## Tracing
@@ -24,4 +24,10 @@ timedatectl set-timezone Europe/Paris
 usermod -aG olivierkessler tracing
 usermod -aG olivierkessler docker
 
+# Install nerdfonts to get icons working
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip \
+&& cd ~/.local/share/fonts \
+&& unzip JetBrainsMono.zip \
+&& rm JetBrainsMono.zip \
+&& fc-cache -fv
 

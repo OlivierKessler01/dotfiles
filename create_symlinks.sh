@@ -18,4 +18,6 @@ ln -s $(pwd)/.bash_profile ~
 rm ~/.gitconfig && true
 ln -s $(pwd)/.gitconfig ~
 
+rm -r ~/.config/nitrogen && true
+ln -s $(pwd)/.config/nitrogen ~/.config
 

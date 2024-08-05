@@ -28,7 +28,7 @@ function install_lttng() {
     #Modules require signature to be installed if Secure boot is enabled
     #MOK is a pain on a day to day basis so just ask the user to disable
     #secure boot
-    read -p "Did you disable Secure Boot in the UEFI BIOS, you need to ? " -n 1 -r
+    read -p "Did you disable Secure Boot in the UEFI BIOS, you need to !? " -n 1 -r
     echo    # (optional) move to a new line
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
@@ -44,7 +44,7 @@ function install_lttng() {
 }
 
 function start_kernel_tracing() {
-    read -p "Did you disable Secure Boot in the UEFI BIOS, you need to ? " -n 1 -r
+    read -p "Did you disable Secure Boot in the UEFI BIOS, you need to !? " -n 1 -r
     echo    # (optional) move to a new line
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
