@@ -16,6 +16,7 @@ fi
 export PATH=$PATH:/var/lib/snapd/snap/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/usr/local/trace-compass
+export PATH=$PATH:/usr/local/mongosh/bin
 export EDITOR=/usr/local/bin/nvim
 
 function connect_vpn() {
