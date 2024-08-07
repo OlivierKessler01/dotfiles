@@ -49,12 +49,13 @@ function start_kernel_tracing() {
     echo    # (optional) move to a new line
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
+        sudo rm -rf /tmp/my-kernel-trace && true
         sudo killall lttng-sessiond && echo "Killed daemon"
         sudo lttng-sessiond -d && true
         lttng destroy my-kernel-session && true
         lttng create my-kernel-session --output=/tmp/my-kernel-trace
         lttng enable-event --kernel sched_switch,sched_process_fork,sched_process_exit
-        lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket,send,connect
+        lttng enable-event --kernel --syscall open,close,read,write,listen,accept,bind,socket,send,connect,select
         lttng start my-kernel-session 
     fi
 }

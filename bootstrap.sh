@@ -5,7 +5,9 @@ sudo dnf update
 sudo dnf install --noconfirm maim xclip redshift redshift-gtk \
 i3 pavucontrol ripgrep picom nitrogen g++ git alacritty nvim \
  gcc automake autoconf make pkg-config openssl-devel xrandr \
- autorandr
+ autorandr ripgrep snapd
+
+sudo snap install todoist
 
 ## Needed to build kernel modules (like lttng)
 sudo dnf install kernel-devel
@@ -30,4 +32,7 @@ wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/do
 && unzip JetBrainsMono.zip \
 && rm JetBrainsMono.zip \
 && fc-cache -fv
+
+
+echo "Please reboot now !"
 
