@@ -23,8 +23,8 @@ rm node.sh
 timedatectl set-timezone Europe/Paris
 
 # Add user to groups
-usermod -aG olivierkessler tracing
-usermod -aG olivierkessler docker
+sudo usermod -aG tracing olivierkessler
+sudo usermod -aG docker olivierkessler
 
 # Install nerdfonts to get icons working
 wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip \
