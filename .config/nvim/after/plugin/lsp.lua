@@ -5,10 +5,12 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.ensure_installed({
-    'tsserver',
+    'ts_ls',
     'eslint',
     'pyright',
-    'clangd'
+    'clangd',
+    'terraform-ls',
+    'bashls'
 })
 
 lsp.setup()
