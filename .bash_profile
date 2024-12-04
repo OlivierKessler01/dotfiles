@@ -18,6 +18,7 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/usr/local/trace-compass
 export PATH=$PATH:/usr/local/mongosh/bin
 export EDITOR=/usr/local/bin/nvim
+export AWS_DEFAULT_PROFILE="datascience-rd"
 
 function connect_vpn() {
     HOST="$1" && PORT=443 && \
