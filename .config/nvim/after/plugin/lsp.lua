@@ -12,6 +12,7 @@ require('mason-lspconfig').setup({
         'pyright',
         'clangd',
         'bashls',
+        'pyright'
   },
   handlers = {
     -- this first function is the "default handler"
@@ -29,7 +30,7 @@ require('mason-lspconfig').setup({
     -- pip install --config-settings editable_mode=compat -e ../<yourpackage/
     pyright = function()
       require('lspconfig').pyright.setup({
-        single_file_support = false,
+        single_file_support = true,
         on_attach = function(client, bufnr)
           print("Pyright Python path:", client.config.settings.python.pythonPath)
         end
