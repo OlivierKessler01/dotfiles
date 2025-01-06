@@ -1,5 +1,12 @@
 -- User defined -------------------------------------------i
--- Run :PackerInstall to install Plugins
+
+
+
+-- Inspiration comes from here 
+-- https://dev.to/slydragonn/ultimate-neovim-setup-guide-lazynvim-plugin-manager-23b7
+
+
+
 
 vim.api.nvim_command('filetype plugin indent on')
 vim.opt.number           = true
@@ -24,142 +31,52 @@ vim.api.nvim_set_keymap('n', '<C-L>', '<C-W><C-L>', { noremap = true, silent = t
 vim.api.nvim_set_keymap('n', '<C-H>', '<C-W><C-H>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', 'jk', '<Esc>', { })
-vim.cmd.packadd('packer.nvim')
-
 -- Copy to clipboard
 vim.api.nvim_set_keymap('n', "<leader>y",  '"+y', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', "<leader>y",  '"+y', { noremap = true, silent = true })
-
 -- Paste from clipboard
 vim.api.nvim_set_keymap('n', "<leader>p",  '"+p', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', "<leader>p",  '"+p', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', "<leader>P",  '"+P', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', "<leader>P",  '"+P', { noremap = true, silent = true })
 
--- Treesitter config
-return require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
-    -- LUALINE
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-    }
 
-    -- Treesitter, language parsers used for features like highlighting
-    -- folding, etc.
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = function()
-            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-            ts_update()
-        end,
-        config = function()
-            require'nvim-treesitter.configs'.setup {
-              -- A list of parser names, or "all" (the five listed parsers should always be installed)
-              ensure_installed = { 
-                  "c",
-                  "php",
-                  "lua",
-                  "vim",
-                  "vimdoc",
-                  "query", 
-                  "python",
-                  "cpp",
-                  "typescript",
-                  "yaml"
-                },
 
-              -- Install parsers synchronously (only applied to `ensure_installed`)
-              sync_install = false,
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
 
-              -- Automatically install missing parsers when entering buffer
-              -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-              auto_install = true,
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
-              highlight = {
-                enable = true,
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = {
+    { import = "plugins" }, -- imports from the plugins folder
+  },
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  install = { colorscheme = { "habamax" } },
+  -- automatically check for plugin updates
+  checker = { enabled = true },
+})
 
-                -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-                -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-                -- Using this option may slow down your editor, and you may see some duplicate highlights.
-                -- Instead of true it can also be a list of languages
-                additional_vim_regex_highlighting = false,
-              },
-            }
-        end,
-    }
- 
-    -- LSP 
-    use {
-         'neovim/nvim-lspconfig'
-    }
 
-    use {
-        'williamboman/mason.nvim',
-        run = function()
-            pcall(vim.cmd, 'MasonUpdate')
-        end,
-    }
 
-    use { 'williamboman/mason-lspconfig.nvim' }
-
-    -- Autocompletion
-    use { 'hrsh7th/nvim-cmp' }
-    use { 'hrsh7th/cmp-nvim-lsp' }
-    use { 'L3MON4D3/LuaSnip' }
-
-    -- TELESCOPE
-    use {
-        'nvim-telescope/telescope.nvim',
-        tag = '0.1.8',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
-    local builtin = require('telescope.builtin')
-    vim.keymap.set('n', '<C-P>', builtin.find_files, {})
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-    vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-
-    --NvimTree
-    use { 'nvim-tree/nvim-tree.lua' }
-    use { 'nvim-tree/nvim-web-devicons' }
-
-    -- Tagbar
-    use { 'preservim/tagbar' }
-
-    -- GitBlame
-    use { 'f-person/git-blame.nvim' }
-    use { "ellisonleao/gruvbox.nvim" }
-    use { 'tpope/vim-fugitive' }
-
-    vim.cmd("colorscheme gruvbox")
-    require("nvim-tree").setup({
-        sort_by = "case_sensitive",
-        renderer = {
-            group_empty = true,
-        },
-        filters = {
-            dotfiles = false,
-        },
-    })
-    
-    -- gitsigns shows symbols for updated lines
-    use {'lewis6991/gitsigns.nvim'}
-    require('gitsigns').setup {
-        signs = {
-            add          = { text = '+' },
-            change       = { text = '│' },
-            delete       = { text = '_' },
-            topdelete    = { text = '‾' },
-            changedelete = { text = '~' },
-            untracked    = { text = '┆' },
-        },
-    }
-
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
-end)
 
