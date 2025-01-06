@@ -50,7 +50,6 @@ return require('packer').startup(function(use)
     -- folding, etc.
     use {
         'nvim-treesitter/nvim-treesitter',
-        tag = 'v0.9.2',
         run = function()
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
@@ -90,27 +89,25 @@ return require('packer').startup(function(use)
             }
         end,
     }
+ 
+    -- LSP 
+    use {
+         'neovim/nvim-lspconfig'
+    }
 
     use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v4.x',
-        requires = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' }, -- Required
-            {                      -- Optional
-                'williamboman/mason.nvim',
-                run = function()
-                    pcall(vim.cmd, 'MasonUpdate')
-                end,
-            },
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' }, -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' }, -- Required
-        }
+        'williamboman/mason.nvim',
+        run = function()
+            pcall(vim.cmd, 'MasonUpdate')
+        end,
     }
+
+    use { 'williamboman/mason-lspconfig.nvim' }
+
+    -- Autocompletion
+    use { 'hrsh7th/nvim-cmp' }
+    use { 'hrsh7th/cmp-nvim-lsp' }
+    use { 'L3MON4D3/LuaSnip' }
 
     -- TELESCOPE
     use {
