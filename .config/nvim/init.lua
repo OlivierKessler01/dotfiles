@@ -1,12 +1,7 @@
 -- User defined -------------------------------------------i
 
-
-
 -- Inspiration comes from here 
 -- https://dev.to/slydragonn/ultimate-neovim-setup-guide-lazynvim-plugin-manager-23b7
-
-
-
 
 vim.api.nvim_command('filetype plugin indent on')
 vim.opt.number           = true
@@ -21,7 +16,7 @@ vim.opt.colorcolumn      = '79'
 vim.wo.relativenumber    = true
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors    = true
-vim.api.nvim_set_keymap('n', '<F2>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F2>', ':Neotree<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-p>', ':Files<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<F8>', ':TagbarToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
@@ -39,8 +34,6 @@ vim.api.nvim_set_keymap('n', "<leader>p",  '"+p', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('v', "<leader>p",  '"+p', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', "<leader>P",  '"+P', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', "<leader>P",  '"+P', { noremap = true, silent = true })
-
-
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -62,8 +55,8 @@ vim.opt.rtp:prepend(lazypath)
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.mapleader = "\\"
+vim.g.maplocalleader = " "
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -72,10 +65,12 @@ require("lazy").setup({
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" } },
+  install = { colorscheme = { "gruvbox" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
+
+vim.cmd("colorscheme gruvbox")
 
 
 
