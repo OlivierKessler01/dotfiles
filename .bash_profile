@@ -13,11 +13,18 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s`
 fi
 
+export EDITOR=/usr/local/bin/nvim
+
 export PATH=$PATH:/var/lib/snapd/snap/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/usr/local/trace-compass
 export PATH=$PATH:/usr/local/mongosh/bin
-export EDITOR=/usr/local/bin/nvim
+
+# CUDA/NVCC
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
+# AWS CLI
 export AWS_DEFAULT_PROFILE="datascience-rd"
 
 function connect_vpn() {

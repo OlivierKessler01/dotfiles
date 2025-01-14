@@ -44,12 +44,6 @@ return {
                     capabilities = capabilities,
                 })
             end,
-            ["tailwindcss"] = function()
-                nvim_lsp["tailwindcss"].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                })
-            end,
             ["html"] = function()
                 nvim_lsp["html"].setup({
                     on_attach = on_attach,
@@ -70,6 +64,12 @@ return {
             end,
             ["pyright"] = function()
                 nvim_lsp["pyright"].setup({
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                })
+            end,
+            ["clangd"] = function()
+                nvim_lsp["eslint"].setup({
                     on_attach = on_attach,
                     capabilities = capabilities,
                 })

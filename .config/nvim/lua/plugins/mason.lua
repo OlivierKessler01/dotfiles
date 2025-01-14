@@ -15,6 +15,7 @@ return {
                 "html",
                 "jsonls",
                 "pyright",
+                "clangd"
             },
         })
 
