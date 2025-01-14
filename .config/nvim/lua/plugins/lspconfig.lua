@@ -69,7 +69,7 @@ return {
                 })
             end,
             ["clangd"] = function()
-                nvim_lsp["eslint"].setup({
+                nvim_lsp["clangd"].setup({
                     on_attach = on_attach,
                     capabilities = capabilities,
                 })
