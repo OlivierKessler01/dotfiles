@@ -28,9 +28,7 @@ sudo openfortivpn --version
 
 # download openfortivpn-webview to get the cookie
 ```bash
-wget -qO- https://github.com/gm-vm/openfortivpn-webview/releases/download/v1.1.0-electron/openfortivpn-webview-1.1.0.tar.xz | sudo tar -xvJ --transform='s/openfortivpn-webview-1.1.0/openfortivpn-webview/g' \
--C /usr/local  && sudo ln -s /usr/local/openfortivpn-webview/openfortivpn-webview \
-/usr/local/bin/openfortivpn-webview 
+wget -qO- https://github.com/gm-vm/openfortivpn-webview/releases/download/v1.2.3-electron/openfortivpn-webview-1.2.3-x64.tar.xz | sudo tar -xvJ --transform='s/openfortivpn-webview-1.2.3-x64/openfortivpn-webview/g' -C /usr/local  && sudo ln -s /usr/local/openfortivpn-webview/openfortivpn-webview /usr/local/bin/openfortivpn-webview 
 ```
 
 # Connect 

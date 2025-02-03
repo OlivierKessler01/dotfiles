@@ -35,6 +35,8 @@ vim.api.nvim_set_keymap('v', "<leader>p",  '"+p', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('n', "<leader>P",  '"+P', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', "<leader>P",  '"+P', { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
