@@ -17,7 +17,6 @@ vim.wo.relativenumber    = true
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors    = true
 vim.api.nvim_set_keymap('n', '<F2>', ':Neotree<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-p>', ':Telescope find_files<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<F8>', ':TagbarToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-J>', '<C-W><C-J>', { noremap = true, silent = true })
@@ -36,6 +35,7 @@ vim.api.nvim_set_keymap('n', "<leader>P",  '"+P', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('v', "<leader>P",  '"+P', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
