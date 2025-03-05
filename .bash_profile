@@ -28,9 +28,18 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 export AWS_DEFAULT_PROFILE="datascience-rd"
 
 function connect_vpn() {
-    HOST="$1" && PORT=443 && \
-      openfortivpn-webview $HOST:$PORT 2>/dev/null \
-      | sudo openfortivpn $HOST:$PORT --cookie-on-stdin
+    HOST="nase.vpn.bioserenity.com"
+    PORT=443
+
+    FINGERPRINT=$(openssl s_client -connect nase.vpn.bioserenity.com:443  < /dev/null 2>/dev/null | openssl x509 -fingerprint -sha256 -noout -in /dev/stdin | awk -F= '{ gsub(":", "", $2); print tolower($2)}')
+
+    cert=$(openssl s_client -servername $HOST -connect "${HOST}:${PORT}" -showcerts </dev/null 2>/dev/null)
+
+    # Extract the first certificate from the chain and compute its SHA-256 hash
+    # Use base64 encoding to match the Qt/C++ example
+    FINGERPRINT_2="sha256/$(echo "$cert" | openssl x509 -noout -fingerprint -sha256 | cut -d'=' -f2 | tr -d ':' | xxd -r -p | base64)"
+
+    openfortivpn-webview $HOST:$PORT --trusted-cert $FINGERPRINT_2 2>/dev/null | sudo openfortivpn $HOST:$PORT --cookie-on-stdin --trusted-cert $FINGERPRINT 
 }
 
 function install_lttng() {

@@ -15,7 +15,8 @@ return {
                 "html",
                 "jsonls",
                 "pyright",
-                "clangd"
+                "clangd",
+                "terraform-ls"
             },
         })
 
