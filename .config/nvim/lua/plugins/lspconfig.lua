@@ -14,13 +14,13 @@ return {
         local on_attach = function(client, bufnr)
             -- format on save
             if client.server_capabilities.documentFormattingProvider then
-                vim.api.nvim_create_autocmd("BufWritePre", {
-                    group = vim.api.nvim_create_augroup("Format", { clear = true }),
-                    buffer = bufnr,
-                    callback = function()
-                        vim.lsp.buf.format()
-                    end,
-                })
+               --    vim.api.nvim_create_autocmd("BufWritePre", {
+                --    group = vim.api.nvim_create_augroup("Format", { clear = true }),
+                 --   buffer = bufnr,
+                  --  callback = function()
+                  --      vim.lsp.buf.format()
+                  --  end,
+               -- })
             end
         end
 
@@ -32,8 +32,8 @@ return {
                     capabilities = capabilities,
                 })
             end,
-            ["tsserver"] = function()
-                nvim_lsp["tsserver"].setup({
+            ["ts_ls"] = function()
+                nvim_lsp["ts_ls"].setup({
                     on_attach = on_attach,
                     capabilities = capabilities,
                 })
