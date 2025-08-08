@@ -1,9 +1,11 @@
 #!/usr/bin/bash
 
+echo "Bootstrapping Fedora development machine"
+
 # Install common software I use
 sudo dnf update 
 sudo dnf install --noconfirm maim xclip redshift redshift-gtk \
-i3 pavucontrol ripgrep picom nitrogen g++ git alacritty nvim \
+i3 pavucontrol ripgrep picom nitrogen g++ git alacritty \
  gcc automake autoconf make pkg-config openssl-devel xrandr \
  autorandr ripgrep snapd
 
@@ -33,6 +35,10 @@ wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/do
 && rm JetBrainsMono.zip \
 && fc-cache -fv
 
+echo "Installing nvim"
+
+cd ~/code && git clone git@github.com:neovim/neovim.git && \
+    cd neovim && make make CMAKE_BUILD_TYPE=Release && sudo make install
 
 echo "Please reboot now !"
 
