@@ -37,7 +37,7 @@ vim.api.nvim_set_keymap('v', "<leader>P",  '"+P', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
 vim.diagnostic.config({
-  virtual_text = true,   -- show error/warning text inline
+  virtual_lines = true,   -- show error/warning text inline
   signs = true,          -- show signs in the gutter (left column)
   underline = true,      -- underline problematic code
   update_in_insert = false, -- update diagnostics while typing (false = on leave insert mode)

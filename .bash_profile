@@ -28,10 +28,10 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 export AWS_DEFAULT_PROFILE="datascience-rd"
 
 function connect_vpn() {
-    HOST="nase.vpn.bioserenity.com"
+    HOST="paf4c.vpn.bioserenity.com"
     PORT=443
 
-    FINGERPRINT=$(openssl s_client -connect nase.vpn.bioserenity.com:443  < /dev/null 2>/dev/null | openssl x509 -fingerprint -sha256 -noout -in /dev/stdin | awk -F= '{ gsub(":", "", $2); print tolower($2)}')
+    FINGERPRINT=$(openssl s_client -connect paf4c.vpn.bioserenity.com:443  < /dev/null 2>/dev/null | openssl x509 -fingerprint -sha256 -noout -in /dev/stdin | awk -F= '{ gsub(":", "", $2); print tolower($2)}')
 
     cert=$(openssl s_client -servername $HOST -connect "${HOST}:${PORT}" -showcerts </dev/null 2>/dev/null)
 
