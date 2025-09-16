@@ -3,4 +3,4 @@ opacity = 0.95
 
 [font]
 size = 12
-normal = { family = "JetBrainsMonoNerdFont", style = "Light" }
+normal = { family = "JetBrainsMono NF", style = "Regular" }
