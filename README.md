@@ -1,8 +1,18 @@
 # dotfiles
-Tmux, NVIM and I3 configuration files for my development environment
 
+A standard configuration for all my machine, whether Linux or MacOS.
 
-# OpenFortiVPN
+Linux : Tmux, NVIM and I3 configuration files
+MacOS : Tmux, NVIM, Karabiner and Aerospace configuration files
+
+## Installation
+
+```bash
+git clone ...
+./create_symlinks.sh
+```
+
+## OpenFortiVPN
 
 - first install pre-requisites: 
 #https://github.com/gm-vm/openfortivpn#building-and-installing-from-source
@@ -26,17 +36,17 @@ sudo make install
 sudo openfortivpn --version
 ```
 
-# download openfortivpn-webview to get the cookie
+### download openfortivpn-webview to get the cookie
 ```bash
 wget -qO- https://github.com/gm-vm/openfortivpn-webview/releases/download/v1.2.3-electron/openfortivpn-webview-1.2.3-x64.tar.xz | sudo tar -xvJ --transform='s/openfortivpn-webview-1.2.3-x64/openfortivpn-webview/g' -C /usr/local  && sudo ln -s /usr/local/openfortivpn-webview/openfortivpn-webview /usr/local/bin/openfortivpn-webview 
 ```
 
-# Connect 
+### Connect 
 ```bash
 connect_vpn "<url>"
 ```
 
-# Kernel tracing
+## Kernel tracing
 
 1. Install lttng on the computer
 
