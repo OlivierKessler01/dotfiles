@@ -32,3 +32,16 @@ tcp_dump() {
 autoload -Uz colors && colors
 
 PROMPT='%F{cyan}%n%F{red}@%F{green}%m:%F{magenta}%~%F{red}$%f '
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+autoload -Uz up-line-or-beginning-search
+autoload -Uz history-incremental-search-backward
+
+bindkey '^R' history-incremental-search-backward
+bindkey -v
+
+alias i3lock='pmset displaysleepnow'
