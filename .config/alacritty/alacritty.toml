@@ -4,3 +4,21 @@ opacity = 0.95
 [font]
 size = 12
 normal = { family = "JetBrainsMono NF", style = "Regular" }
+
+[keyboard]
+bindings = [
+  # Zoom / font size
+  { key= "Equals", mods= "Control", action= "IncreaseFontSize" },
+  { key= "Minus",  mods= "Control", action= "DecreaseFontSize" },
+
+  # Copy / Paste
+  { key= "C", mods= "Control", action= "Copy" },
+  { key= "V", mods= "Control", action= "Paste" },
+
+  # Scroll
+  { key= "Up", mods= "Control", action= "ScrollPageUp" },
+  { key= "Down", mods= "Control", action= "ScrollPageDown" },
+
+  # Clear scrollback
+  { key= "K", mods= "Control", action= "ClearHistory" },
+]
