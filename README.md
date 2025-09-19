@@ -5,7 +5,7 @@ A standard configuration for all my machine, whether Linux or MacOS.
 Linux : Tmux, NVIM and I3 configuration files
 MacOS : Tmux, NVIM, Karabiner and Aerospace configuration files
 
-## Installation
+## Installation Linux
 
 ```bash
 git clone ...
@@ -68,4 +68,12 @@ Run tracecompass to read the traces located in /tmp/my-kernel-trace
 
 ```bash
 tracecompass
+```
+
+## Installation MacOs
+
+```bash
+git clone ...
+./create_symlinks.sh
+./bootstrap_macos.sh
 ```
