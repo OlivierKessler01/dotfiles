@@ -1,6 +1,4 @@
-
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
 
 # build image : curl -LO https://github.com/archlinuxarm/ArchLinuxARM/releases/download/2024.09/ArchLinuxARM-aarch64-latest.tar.gz
 # build image : qemu-img create -f qcow2 archarm.qcow2 100G

@@ -18,7 +18,4 @@ bindings = [
   # Scroll
   { key= "Up", mods= "Control", action= "ScrollPageUp" },
   { key= "Down", mods= "Control", action= "ScrollPageDown" },
-
-  # Clear scrollback
-  { key= "K", mods= "Control", action= "ClearHistory" },
 ]

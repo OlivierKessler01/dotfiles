@@ -16,7 +16,7 @@ vim.opt.colorcolumn      = '79'
 vim.wo.relativenumber    = true
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors    = true
-vim.api.nvim_set_keymap('n', '<F2>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+--vim.api.nvim_set_keymap('n', '<F2>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<F8>', ':TagbarToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-J>', '<C-W><C-J>', { noremap = true, silent = true })
@@ -25,6 +25,7 @@ vim.api.nvim_set_keymap('n', '<C-L>', '<C-W><C-L>', { noremap = true, silent = t
 vim.api.nvim_set_keymap('n', '<C-H>', '<C-W><C-H>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', 'jk', '<Esc>', { })
+
 -- Copy to clipboard
 vim.api.nvim_set_keymap('n', "<leader>y",  '"+y', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', "<leader>y",  '"+y', { noremap = true, silent = true })
@@ -36,6 +37,9 @@ vim.api.nvim_set_keymap('v', "<leader>P",  '"+P', { noremap = true, silent = tru
 
 vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_create_user_command('Tree', 'NvimTreeToggle<CR>', {})
+
 vim.diagnostic.config({
   virtual_lines = true,   -- show error/warning text inline
   signs = true,          -- show signs in the gutter (left column)
