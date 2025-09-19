@@ -5,7 +5,6 @@
                 "rules": [
                     {
                         "description": "Remap ctrl+t to command+t",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
