@@ -26,10 +26,10 @@ return {
         capabilities = capabilities,
       })
 
-      vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-      vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-      vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float)
-      vim.keymap.set("n", "<leader>cl", vim.diagnostic.setloclist)
+      --vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+      --vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+      --vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float)
+      --vim.keymap.set("n", "<leader>cl", vim.diagnostic.setloclist)
     end,
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
