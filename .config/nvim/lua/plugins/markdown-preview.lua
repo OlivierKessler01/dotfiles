@@ -1,7 +1,13 @@
 return {
-    "iamcco/markdown-preview.nvim",
-    version = "0.0.10",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
-}
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+
+   -- For `nvim-treesitter` users.
+    priority = 49,
+
+    -- For blink.cmp's completion
+    -- source
+    -- dependencies = {
+    --     "saghen/blink.cmp"
+    -- },
+};

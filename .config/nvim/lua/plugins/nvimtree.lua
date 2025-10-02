@@ -16,6 +16,10 @@ return {
           side = 'left',
           adaptive_size = true,
         },
+        filters = {
+          git_ignored = true,
+          dotfiles = true,
+        },
         renderer = {
           icons = {
             show = {
