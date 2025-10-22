@@ -3,7 +3,10 @@
 
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+after-startup-command = [
+    "exec-and-forget alacritty --class 'alacritty-code,alacritty-code' --hold -e tmux new -s terminal"
+    "exec-and-forget alacritty --class 'alacritty-code,alacritty-code' --hold -e tmux new -s nvim" 
+]
 
 # Start AeroSpace at login
 start-at-login = false

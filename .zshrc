@@ -46,3 +46,5 @@ bindkey -v
 
 alias i3lock='pmset displaysleepnow'
 alias git-graph='git log --graph --all --decorate --oneline'
+
+. "$HOME/.local/bin/env"

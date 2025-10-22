@@ -6,7 +6,7 @@ return {
   {
     "mason-org/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = { "pyright" },
+      ensure_installed = { "pyright", "yamlls", "helm-ls" },
       automatic_installation = true,
     },
     dependencies = {
