@@ -5,7 +5,6 @@
                 "rules": [
                     {
                         "description": "Ctrl+C/V/X/Z/A/L → Cmd+C/V/X/Z/A/L outside of terminals (safe for tmux/nvim)",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [

@@ -21,7 +21,7 @@ export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 # AWS default profile
-export AWS_DEFAULT_PROFILE="XXXX"
+#export AWS_DEFAULT_PROFILE="XXXX"
 
 tcp_dump() {
   # Usage: tcp_dump <interface> <port>
@@ -48,3 +48,6 @@ alias i3lock='pmset displaysleepnow'
 alias git-graph='git log --graph --all --decorate --oneline'
 
 . "$HOME/.local/bin/env"
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"

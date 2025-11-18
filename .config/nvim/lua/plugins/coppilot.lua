@@ -9,9 +9,9 @@ return {
       auto_trigger = true,
       hide_during_completion = vim.g.ai_cmp,
       keymap = {
-        accept = false, -- handled by nvim-cmp / blink.cmp
-        next = "<M-]>",
-        prev = "<M-[>",
+          accept = "<leader>y",
+          next = "<leader>n",
+          prev = "<leader>p",
       },
     },
     panel = { enabled = false },
