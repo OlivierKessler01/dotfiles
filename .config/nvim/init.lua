@@ -40,6 +40,12 @@ vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { no
 
 vim.api.nvim_create_user_command('Tree', 'NvimTreeToggle<CR>', {})
 
+-- Highlight group for trailing whitespace
+vim.api.nvim_set_hl(0, "TrailingWhitespace", { bg = "#553333" })  -- choose any color
+
+-- Match trailing whitespace
+vim.fn.matchadd("TrailingWhitespace", [[\s\+$]])
+
 vim.diagnostic.config({
   virtual_lines = true,   -- show error/warning text inline
   signs = true,          -- show signs in the gutter (left column)

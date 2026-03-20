@@ -1,8 +1,12 @@
-[user]
-    email = olivier.kessler@protonmail.com
-	name = Olivier Kessler
+[includeIf "gitdir:~/code/owkin/"]
+    path = ~/.gitconfig-work
+
+[includeIf "gitdir:~/code/perso/"]
+    path = ~/.gitconfig-perso
+
 [core]
 	editor = "/usr/local/bin/nvim"
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -10,3 +14,4 @@
 	required = true
 [init]
 	defaultBranch = main
+

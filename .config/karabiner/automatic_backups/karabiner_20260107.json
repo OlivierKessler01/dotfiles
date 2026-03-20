@@ -19,7 +19,6 @@
                                             "^co\\.zeit\\.hyper$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
-                                        "file_paths": ["/Alacritty$", "/alacritty$"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
@@ -48,7 +47,6 @@
                                             "^co\\.zeit\\.hyper$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
-                                        "file_paths": ["/Alacritty$", "/alacritty$"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
@@ -77,7 +75,6 @@
                                             "^co\\.zeit\\.hyper$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
-                                        "file_paths": ["/Alacritty$", "/alacritty$"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
@@ -106,7 +103,6 @@
                                             "^co\\.zeit\\.hyper$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
-                                        "file_paths": ["/Alacritty$", "/alacritty$"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
@@ -135,7 +131,6 @@
                                             "^co\\.zeit\\.hyper$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
-                                        "file_paths": ["/Alacritty$", "/alacritty$"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
@@ -164,7 +159,6 @@
                                             "^co\\.zeit\\.hyper$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
-                                        "file_paths": ["/Alacritty$", "/alacritty$"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],

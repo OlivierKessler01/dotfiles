@@ -18,9 +18,6 @@ ln -s $(pwd)/.tmux.conf ~
 rm ~/.bash_profile && true
 ln -s $(pwd)/.bash_profile ~
 
-rm ~/.zshrc && true
-ln -s $(pwd)/.zshrc ~
-
 rm ~/.zprofile && true
 ln -s $(pwd)/.zprofile ~
 
