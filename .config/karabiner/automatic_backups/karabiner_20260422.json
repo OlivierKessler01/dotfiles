@@ -4,7 +4,7 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Ctrl+C/V/X/Z/A/L/R → Cmd+C/V/X/Z/A/L/R outside of terminals (safe for tmux/nvim)",
+                        "description": "Ctrl+C/V/X/Z/A/L → Cmd+C/V/X/Z/A/L outside of terminals (safe for tmux/nvim)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -175,35 +175,6 @@
                                 "to": [
                                     {
                                         "key_code": "l",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.Terminal$",
-                                            "^io\\.alacritty$",
-                                            "^org\\.alacritty$",
-                                            "^com\\.googlecode\\.iterm2$",
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^dev\\.ztl\\.wezterm$",
-                                            "^co\\.zeit\\.hyper$",
-                                            "^com\\.microsoft\\.VSCode$"
-                                        ],
-                                        "file_paths": ["/Alacritty$", "/alacritty$"],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "r",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "r",
                                         "modifiers": ["command"]
                                     }
                                 ],

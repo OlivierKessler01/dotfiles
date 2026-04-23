@@ -66,9 +66,14 @@ aws_profile() {
         ' ~/.aws/config)
     fi
     unset AWS_REGION
-    export AWS_REGION='eu_west_1'
+    export AWS_REGION='eu-west-1'
     #export AWS_REGION="$aws_region"
     echo "Making sure we are logged in"
     aws sts get-caller-identity >/dev/null || aws sso login
 }
 
+export PATH=$PATH:$(go env GOPATH)/bin
+
+
+# Set MTU to 1400 for en0 to avoid issues with VPNs and certain network configurations (like my fk phone hotspot)
+sudo ifconfig en0 mtu 1400
